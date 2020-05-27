@@ -3,27 +3,23 @@
 <head>
     <title>Weather Wear App</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
     
 </head>
 <body>
     <header>
       <h1>Weather Wear</h1>
     </header>
-    <div class="top">
         <form class="search js-search">
-          <input type="text" placeholder="Enter city here" id="city-name" class="js-city" required="">
+          <input type="text" placeholder="Enter city here" class="js-city" required="">
           <br>
-          <input type="submit" value="SEARCH" class="js-max-results" class="js-weather">
+          <input type="submit" value="SEARCH" class="js-weather">
         </form>
-      </div>
-
-      <div class="bottom">
         <h2 class="js-error-message"></h2>
         <section class="results hidden js-results-box">
-
           <ul class="js-results"></ul>
-        </section>  
-      </div>   
+        </section>   
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="script.js"></script>
 </body>

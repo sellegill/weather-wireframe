@@ -18,11 +18,11 @@ function getWeatherData (city){
     units: "Imperial",
     appid: apiKey
   }
-  console.log(params)
+ 
 
   const queryString = formatQueryParams(params);
   const url = searchURL + '?' + queryString;
-  console.log(url);
+  
   fetch(url)
   .then(response => {
     if (response.ok) {
@@ -46,45 +46,38 @@ function displayCity(responseJson) {
   } else {
      let icon = ("")
      if(responseJson.weather[0].main == ("Thunderstorm")){
-       icon = "icons8-umbrella-50.png", "icons8-raincoat-50.png"
-       icon = `<img src="${icon}">`
+      icon = `<img src="icons8-closed-umbrella-100.png"><img src="icons8-mens-hoodie-100.png"><img src="icons8-jeans-100.png">`
      }
 
      if(responseJson.weather[0].main == ("Rain")){
-      icon = "icons8-umbrella-50.png", "icons8-raincoat-50.png"
-      icon = `<img src="${icon}">`
+      icon = `<img src="icons8-closed-umbrella-100.png"><img src="icons8-blazer-100.png"><img src="icons8-jeans-100.png"><img src="icons8-cap-100.png">`
     }
 
     if(responseJson.weather[0].main == ("Snow")){
-      icon = "icons8-ushanka-50.png", "icons8-mittens-50.png"
-      icon = `<img src="${icon}">`
+      icon = `<img src="icons8-ugg-boots-100.png"><img src="icons8-mittens-100.png"><img src="icons8-scarf-100.png"><img src="icons8-beanie-100.png">`
     }
 
     if(responseJson.weather[0].main == ("Clear")){
-      icon = "icons8-trainers-50.png", "icons8-t-shirt-50.png"
-      icon = `<img src="${icon}">`
+      icon = `<img src="icons8-long-shorts-100.png"><img src="icons8-womens-t-shirt-100.png"><img src="icons8-sneakers-100.png"><img src="icons8-cap-100.png">`
     }
 
     if(responseJson.weather[0].main == ("Clouds")){
-      icon = ["icons8-jeans-50.png"],["icons8-tracksuit-50.png"]
-      icon = `<img src="${icon}">`
+      icon = `<img src="icons8-jeans-100.png"><img src="icons8-v-neck-longsleeve-100.png"><img src="icons8-sneakers-100.png"><img src="icons8-cap-100.png">`
     }
 
-     //thunderstorm, drizzle, rain, snow, clouds
 
       $('.js-results').append(
         `<li>
         <h3 class="city">${responseJson.name}</h3>
         <p class="weater-type"> ${responseJson.weather[0].main}</p>
-        <p class="temp"> Temp: ${responseJson.main.temp}</p>
-        <p class="max-temp"> High:${responseJson.main.temp_max}</p>
-        <p class="min-temp"> Low: ${responseJson.main.temp_min}</p>
+        <p class="temp"> Temp: ${responseJson.main.temp} F</p>
+        <p class="max-temp"> High: ${responseJson.main.temp_max} F</p>
+        <p class="min-temp"> Low: ${responseJson.main.temp_min} F</p>
         ${icon}
         </li>`
       );
   }
 }
-/* <a target="_blank" href="https://icons8.com/icons/set/umbrella">Umbrella</a>, <a target="_blank" href="https://icons8.com/icons/set/scarf">Scarf</a> and other icons by <a target="_blank" href="https://icons8.com">Icons8</a> */
 
 
 function watchForm() {
@@ -93,10 +86,7 @@ function watchForm() {
     $('.js-results-box').addClass('hidden');
     $('.js-results').empty();
     $('.js-error-message').text('');
-    const temp = $('.js-weather').val();
     const name = $('.js-city').val();
-    
-
     
 
     getWeatherData(name);
